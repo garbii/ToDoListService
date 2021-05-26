@@ -13,10 +13,10 @@ jobs:
             echo 'export IMAGE_NAME=todolist-backend' >> $BASH_ENV
       - run:
           name: Build
-          command: $MAVEN_HOME/bin/mvn -B -DskipTests clean package
+          command: mvn -B -DskipTests clean package
       - run:
           name: Test
-          command: $MAVEN_HOME/bin/mvn test
+          command: mvn test
       - setup_remote_docker:
           docker_layer_caching: false
       - run:
