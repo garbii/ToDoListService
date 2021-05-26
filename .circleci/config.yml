@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-and-test:
     docker:
       - image: openjdk:17-jdk-alpine #cimg/openjdk:11.0
     steps:
