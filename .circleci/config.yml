@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: openjdk:17-jdk-alpine #cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: Setup VirtualEnv
+          command: |
+            echo 'export TAG=1.0.0-SNAPSHOT' >> $BASH_ENV
+            echo 'export IMAGE_NAME=todolist-backend' >> $BASH_ENV
+      - run:
+          name: Build
+          command: mvn -B -DskipTests clean package
+      - run:
+          name: Test
+          command: mvn test
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Build and push Docker image
+          command: |
+            docker build -t garbiozyildiz/$IMAGE_NAME:$TAG .
+            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+            docker push garbiozyildiz/$IMAGE_NAME:$TAG
+    #  - run:
+    #      name: Deploy app to Digital Ocean Server via Docker
+    #      command: |
+    #        ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
