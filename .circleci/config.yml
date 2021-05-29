@@ -25,6 +25,10 @@ jobs:
             docker build -t garbiozyildiz/$IMAGE_NAME:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push garbiozyildiz/$IMAGE_NAME:$TAG
+      - run:
+          name: Deploy app to AWS via Ansible
+          command: |
+            ssh -i ansible_server_pk.txt ansadmin@ec2-3-108-44-12.ap-south-1.compute.amazonaws.com "ansible-playbook -i hosts k8s-backend-deployment.yaml "
 workflows:
 # Below is the definition of your workflow.
 # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
@@ -33,7 +37,3 @@ workflows:
   sample: 
     jobs:
       - build-and-test
-    #  - run:
-    #      name: Deploy app to Digital Ocean Server via Docker
-    #      command: |
-    #        ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
