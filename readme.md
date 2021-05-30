@@ -1,5 +1,6 @@
 ## ToDoList Backend Application
-This application provide services for Todolist Frondend application
+This application provide services for Todolist Frontend application
+
 ##Run Application
 Follow these steps to deploy application
 ```
