@@ -1,13 +1,15 @@
 ## ToDoList Backend Application
 This application provide services for Todolist Frontend application
 
+The application is developed in Kotlin with JDK-11.
+
 ## Application Docs
 
-To list all endpoints of application use bellow URI
+To list all endpoints of the application use the following URI
 ```
 {application-host}/swagger-ui.html
 ```
-There are two definitions in the swagger UI. 
+There are two definitions in the swagger documentation. 
 
 The first one called "Public Endpoints" includes enpoints for ToDoList operations.
 
@@ -18,7 +20,8 @@ The second one is "Management" for exposed actuator endpoints.
 ### *1- To run in local environment Intellij*
 
 ```
-Execute JUNIT and Project main class to run in intellij IDE environment. 
+1- Execute JUnit or mvn test to run tests.
+2- Run project main class. 
 ```
 
 ### *2- To run in K8S environment execute the following commands on application root directory.*
