@@ -26,9 +26,16 @@ jobs:
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push garbiozyildiz/$IMAGE_NAME:$TAG
       - run:
+          name: Install sshpass
+          command: |
+            sudo apt-get update
+            sudo apt-get install sshpass
+            
+      - run:
           name: Deploy app to AWS via Ansible
           command: |
-            ssh -i ansible_server_pk.txt ansadmin@ec2-3-108-44-12.ap-south-1.compute.amazonaws.com "ansible-playbook -i hosts k8s-backend-deployment.yaml "
+            sshpass -p 'ansadmin' ssh -o StrictHostKeyChecking=no ansadmin@ec2-3-108-44-12.ap-south-1.compute.amazonaws.com "ansible-playbook -i hosts k8s-backend-deployment.yaml"
+
 workflows:
 # Below is the definition of your workflow.
 # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
