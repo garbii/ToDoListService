@@ -39,7 +39,7 @@ Deploy on K8S:
 ### *3- Using CI/CD with Circleci Environment*
 
 Each commit to Githup Repository(https://github.com/garbii/ToDoListService)
-will trigger the Circleci CI job. CI job will process the following steps.
+will trigger the Circleci CI/CD job. CI/CD job will process the following steps.
 ```
 > 1- Githup send notify to circleci to make new build.
 
