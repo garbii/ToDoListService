@@ -32,9 +32,9 @@ Create image:
 
 Deploy on K8S:
 > kubectl apply deployment.yaml
-
-> Then open your browser on *http://localhost:30007/*
 ```
+Then open your browser on *http://localhost:30007/*
+
 
 ### *3- Using CI/CD with Circleci Environment*
 
