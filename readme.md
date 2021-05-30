@@ -2,15 +2,17 @@
 This application provide services for Todolist Frondend application
 ##Run Application
 Follow these steps to deploy application
->1- mvn clean package   => Run unit test then create docker image    / For CI job
+```
+1- mvn clean package   => Run unit test then create docker image    / For CI job
 
->2- kubectl apply -f ./deployment/k8s/deployment.yaml  => Deploy project on K8S / For CD Job
-
+2- kubectl apply -f ./deployment/k8s/deployment.yaml  => Deploy project on K8S / For CD Job
+```
 ##Application Docs
 
 To list all endpoints of application use bellow URI
-> {application-host}/swagger-ui.html
-
+```
+{application-host}/swagger-ui.html
+```
 There are two definitions in the swagger UI. 
 
 The first one called "Public Endpoints" includes enpoints for ToDoList operations.
@@ -22,7 +24,7 @@ The second one is "Management" for exposed actuator endpoints.
 ### *1- To run in local environment Intellij*
 
 ```
-> Execute JUNIT and Project main class to run in intellij IDE environment. 
+Execute JUNIT and Project main class to run in intellij IDE environment. 
 ```
 
 ### *2- To run in K8S environment execute the following commands on application root directory.*
